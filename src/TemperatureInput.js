@@ -5,6 +5,7 @@ class TemperatureInput extends Component{
         super()
         this.state = {
             temperature:80,
+            msg:"",
         }
         this.handleCharge = this.handleCharge.bind(this);
     }
@@ -15,15 +16,19 @@ class TemperatureInput extends Component{
         if(e.target.value.match(/^\d*$/)){
             this.setState({
                 temperature:e.target.value,
+                msg:'',
             });
         } else {
-            console.log("NaN");
+            this.setState({
+                msg:'NaN',
+            });
         }
     }
 
     render(){
         return(
             <div>
+                <h1>{this.state.msg}</h1>
                 <legend>Scale:</legend>
                 <input onChange={this.handleCharge} value={this.state.temperature} />
             </div>
