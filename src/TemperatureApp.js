@@ -45,7 +45,7 @@ class TemperatureApp extends Component{
             <div id="temp app">
                 <TempInput scale="f" temperature={fTemp} onChange={this.handleFahrenheitChange}/>
                 <TempInput scale="c" temperature={cTemp} onChange={this.handleCelsiusChange} />
-                <BoilingVerdict />
+                <BoilingVerdict temperature={cTemp}/>
             </div>
         );
     }
