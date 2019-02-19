@@ -30,7 +30,7 @@ class TemperatureInput extends Component{
             <div>
                 <h1>{this.state.msg}</h1>
                 <legend>Scale:</legend>
-                <input onChange={this.handleCharge} value={this.state.temperature} />
+                <input onChange={this.props.onChange} value={this.props.temperature} />
             </div>
         );
     }

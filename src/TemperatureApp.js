@@ -5,12 +5,35 @@ import BoilingVerdict from './BoilingVerdict';
 class TemperatureApp extends Component{
     constructor(){
         super();
+        this.state = {
+            temperature: 18,
+            scale: 'c',
+        }
+        this.handleCelsiusChange = this.handleCelsiusChange.bind(this);
+        this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);
     }
+
+    handleCelsiusChange(val){
+        console.log("Celsius value changed to " + val);
+        this.setState({
+            temperature: val.target.value,
+            scale:'c',
+        });
+    }
+
+    handleFahrenheitChange(val){
+        console.log("Fahrenheit value changed to " + val);
+        this.setState({
+            temperature: val.target.value,
+            scale:'f',
+        });
+    }
+
     render(){
         return(
             <div id="temp app">
-                <TempInput />
-                <TempInput />
+                <TempInput scale="f" temperature={this.state.temperature} onChange={this.handleFahrenheitChange}/>
+                <TempInput scale="c" temperature={this.state.temperature} onChange={this.handleCelsiusChange} />
                 <BoilingVerdict />
             </div>
         );
