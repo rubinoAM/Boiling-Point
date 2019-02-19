@@ -30,10 +30,21 @@ class TemperatureApp extends Component{
     }
 
     render(){
+        let fTemp, cTemp;
+        const scale = this.state.scale;
+        const temp = this.state.temperature;
+        if(scale == 'c'){
+            fTemp = Math.round(((temp * 9/5) + 32)*100)/100;
+            cTemp = temp;
+        } else if (scale == 'f'){
+            fTemp = temp;
+            cTemp = Math.round(((temp - 32) * 5/9)*100)/100;
+        }
+
         return(
             <div id="temp app">
-                <TempInput scale="f" temperature={this.state.temperature} onChange={this.handleFahrenheitChange}/>
-                <TempInput scale="c" temperature={this.state.temperature} onChange={this.handleCelsiusChange} />
+                <TempInput scale="f" temperature={fTemp} onChange={this.handleFahrenheitChange}/>
+                <TempInput scale="c" temperature={cTemp} onChange={this.handleCelsiusChange} />
                 <BoilingVerdict />
             </div>
         );
