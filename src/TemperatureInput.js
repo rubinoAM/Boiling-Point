@@ -6,12 +6,19 @@ class TemperatureInput extends Component{
         this.state = {
             temperature:80,
         }
+        this.handleCharge = this.handleCharge.bind(this);
     }
 
     handleCharge(e){
-        this.setState({
-            temperature:e.target.value,
-        });
+        console.log(e.target.value);
+        //Accepts only numbers
+        if(e.target.value.match(/^\d*$/)){
+            this.setState({
+                temperature:e.target.value,
+            });
+        } else {
+            console.log("NaN");
+        }
     }
 
     render(){
